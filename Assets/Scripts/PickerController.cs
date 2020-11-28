@@ -47,9 +47,24 @@ if (Input.touchCount > 0)
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log(other.tag);
         if (other.tag == "EndPoint")
         {
             GameManager.Instance.LockPicker = true;
+        }
+
+        if (other.tag == "Modifier")
+        {
+            transform.GetChild(0).gameObject.SetActive(true);
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Object")
+        {
+            if (GameManager.Instance.LockPicker)
+                other.GetComponent<Rigidbody>().AddForce(Vector3.forward, ForceMode.Impulse);
         }
     }
 }

@@ -5,10 +5,16 @@ using UnityEngine;
 public class SelfRotator : MonoBehaviour
 {
     [SerializeField]
-    private float Speed = 100;
+    private float SpeedX = 0;
+
+    [SerializeField]
+    private float SpeedY = 0;
+
+    [SerializeField]
+    private float SpeedZ = 0;
 
     void Update()
     {
-        transform.Rotate(0, 0, Speed * Time.deltaTime);
+        transform.Rotate(SpeedX * Time.deltaTime, SpeedY * Time.deltaTime, SpeedZ * Time.deltaTime);
     }
 }
