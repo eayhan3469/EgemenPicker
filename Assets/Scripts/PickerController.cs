@@ -44,4 +44,13 @@ if (Input.touchCount > 0)
 #endif
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log(other.name);
+        if (other.tag == "EndPoint")
+        {
+            GameManager.Instance.LockPicker = true;
+        }
+    }
 }

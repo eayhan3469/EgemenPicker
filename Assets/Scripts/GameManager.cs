@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        PickerSpeed = 6f; //TODO: Level'a göre değişecek
+        PickerSpeed = 5f; //TODO: Level'a göre değişecek
         DroneHasStart = false;
         LockPicker = false;
     }
