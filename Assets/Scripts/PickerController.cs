@@ -30,7 +30,7 @@ public class PickerController : MonoBehaviour
                 var mouseX = Input.GetAxis("Mouse X");
                 var mouseY = Input.GetAxis("Mouse Y");
 
-                var touch = Vector3.Lerp(transform.position, transform.position + new Vector3(mouseX, 0f, mouseY), TouchSpeed * Time.deltaTime);
+                var touch = Vector3.Slerp(transform.position, transform.position + new Vector3(mouseX, 0f, mouseY), TouchSpeed * Time.deltaTime);
                 transform.position = new Vector3(Mathf.Clamp(touch.x, -Clamps.x, Clamps.x), transform.position.y, transform.position.z);
             }
 #else
@@ -47,7 +47,6 @@ if (Input.touchCount > 0)
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.name);
         if (other.tag == "EndPoint")
         {
             GameManager.Instance.LockPicker = true;
