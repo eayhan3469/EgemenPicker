@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SinusoidalMove : GameManager
+public class SinusoidalMove : MonoBehaviour
 {
     [SerializeField]
     private float moveSpeed = 5f;
@@ -22,7 +22,7 @@ public class SinusoidalMove : GameManager
 
     void Update()
     {
-        if (DroneHasStart)
+        if (GameManager.Instance.DroneHasStart)
         {
             position += transform.forward * Time.deltaTime * moveSpeed;
             transform.position = position + transform.right * Mathf.Sin(Time.time * frequency) * magnitude;

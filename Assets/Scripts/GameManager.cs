@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public bool DroneHasStart;
+    public static GameManager Instance { get; private set; }
 
-    // Start is called before the first frame update
-    void Start()
+    public float PickerSpeed;
+    public bool DroneHasStart;
+    public bool LockPicker;
+
+    private void Awake()
     {
-        
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
     }
 
-    // Update is called once per frame
+    void Start()
+    {
+        PickerSpeed = 6f; //TODO: Level'a göre değişecek
+        DroneHasStart = false;
+        LockPicker = false;
+    }
+    
     void Update()
     {
         
