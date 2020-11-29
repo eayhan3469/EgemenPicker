@@ -5,7 +5,7 @@ using UnityEngine;
 public class PickerController : MonoBehaviour
 {
     [SerializeField]
-    private float TouchSpeed = 10f;
+    private float TouchSpeed = 5f;
 
     [SerializeField]
     private Vector3 Clamps;
