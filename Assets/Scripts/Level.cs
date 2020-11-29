@@ -10,16 +10,19 @@ public class Level : MonoBehaviour
     void Start()
     {
         ObjectHolders = new Dictionary<Part, ObjectHolder>();
+        var partNumber = 1;
 
         foreach (var part in Parts)
         {
             var objectHolder = part.GetComponentInChildren<ObjectHolder>();
+            part.PartNumber = partNumber;
+            partNumber++;
 
             if (objectHolder != null)
                 ObjectHolders.Add(part, objectHolder);
         }
 
         foreach (var objectHolder in ObjectHolders)
-            objectHolder.Value.NumberOfObjectForPass = GameManager.Instance.LevelMultiplier * objectHolder.Key.PartNumber * 10;
+            objectHolder.Value.NumberOfObjectForPass = (10 * GameManager.Instance.LevelMultiplier) + (objectHolder.Key.PartNumber - 1) * 10;
     }
 }

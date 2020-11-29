@@ -24,7 +24,6 @@ public class PickerController : MonoBehaviour
         {
             transform.Translate(transform.forward * Time.deltaTime * _pickerSpeed);
 
-#if UNITY_EDITOR
             if (Input.GetMouseButton(0))
             {
                 var mouseX = Input.GetAxis("Mouse X");
@@ -33,24 +32,17 @@ public class PickerController : MonoBehaviour
                 var touch = Vector3.Slerp(transform.position, transform.position + new Vector3(mouseX, 0f, mouseY), TouchSpeed * Time.deltaTime);
                 transform.position = new Vector3(Mathf.Clamp(touch.x, -Clamps.x, Clamps.x), transform.position.y, transform.position.z);
             }
-#else
-if (Input.touchCount > 0)
-        {
-            _touch = Input.GetTouch(0);
-
-            if (_touch.phase == TouchPhase.Moved)
-                transform.position = new Vector3(transform.position.x + _touch.deltaPosition.x * Speed, transform.position.y, transform.position.z + _touch.deltaPosition.y * Speed);
-        }
-#endif
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.tag);
         if (other.tag == "EndPoint")
         {
+            Debug.Log(other.tag);
+            other.gameObject.SetActive(false);
             GameManager.Instance.LockPicker = true;
+            StartCoroutine(GameManager.Instance.CheckGameOver());
             transform.GetChild(0).gameObject.SetActive(false);
         }
 
