@@ -1888,6 +1888,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Picker
       objectReference: {fileID: 0}
+    - target: {fileID: 938821303338295765, guid: 515f171f28474b44e829c8d5f04064ff, type: 3}
+      propertyPath: TouchSpeed
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 938821303338295775, guid: 515f171f28474b44e829c8d5f04064ff, type: 3}
       propertyPath: m_Size.y
       value: 2.3834283
