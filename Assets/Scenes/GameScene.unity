@@ -1245,7 +1245,7 @@ MonoBehaviour:
   - {fileID: 1545318165}
   - {fileID: 127744701}
   - {fileID: 747896069}
-  - {fileID: 907599483}
+  - {fileID: 907599482}
 --- !u!1 &360455836
 GameObject:
   m_ObjectHideFlags: 0
@@ -2856,7 +2856,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5617913905018109934, guid: 3ec7ca32359b9644e918fe08b2ad19ca, type: 3}
   m_PrefabInstance: {fileID: 5617913903962790432}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &907599483
+--- !u!114 &907599482
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5103,11 +5103,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a143e15470f693743819aa6bbc0b5f45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 5
-  Frequency: 5
-  Magnitude: 5
+  MoveSpeed: 10
+  Frequency: 2
+  Magnitude: 3
   ObjectCount: 50
-  SpawnFrequency: 0.3
+  SpawnFrequency: 0.05
   Object: {fileID: 8901173156037825908, guid: ff3808b972c605b4eb8d0a1d6ffba974, type: 3}
   ObjectsParent: {fileID: 486283055}
 --- !u!1 &1758459280

@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
     {
         if (Level.ObjectHolders.FirstOrDefault(x => x.Key.PartNumber == CurrentPart).Value.IsSuccess())
         {
+            Debug.Log("Success");
             StartCoroutine(BridgeUp());
             CurrentPart++;
             StartCoroutine(DoorUp());

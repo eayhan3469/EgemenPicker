@@ -35,32 +35,30 @@ public class ObjectSpawner : MonoBehaviour
         spawnHasStart = false;
     }
 
-    //private void SpawnObjects()
-    //{
-    //    spawnHasStart = true;
+    IEnumerator SpawnObjects()
+    {
+        spawnHasStart = true;
+        WaitForSeconds wait = new WaitForSeconds(SpawnFrequency);
 
-    //    for (int i = 0; i < ObjectCount; i++)
-    //    {
-    //        Instantiate(Object, position, Quaternion.identity, ObjectsParent);
-    //        Task.Run(SpawnObjectsAsync).Wait();
-    //    }
-    //}
+        for (int i = 0; i < ObjectCount; i++)
+        {
+            Instantiate(Object, transform.position, Quaternion.identity, ObjectsParent);
+            yield return wait;
+        }
 
-    //private async Task SpawnObjectsAsync()
-    //{
-    //    await Task.Delay(100);
-    //    await Task.CompletedTask;
-    //}
+        GameManager.Instance.DroneHasStart = false;
+        gameObject.SetActive(false);
+    }
 
-    //void Update()
-    //{
-    //    if (GameManager.Instance.DroneHasStart)
-    //    {
-    //        if (!spawnHasStart)
-    //            SpawnObjects();
+    void Update()
+    {
+        if (GameManager.Instance.DroneHasStart)
+        {
+            if (!spawnHasStart)
+                StartCoroutine(SpawnObjects());
 
-    //        position += transform.forward * Time.deltaTime * MoveSpeed;
-    //        transform.position = position + transform.right * Mathf.Sin(Time.time * Frequency) * Magnitude;
-    //    }
-    //}
+            position += transform.forward * Time.deltaTime * MoveSpeed;
+            transform.position = position + transform.right * Mathf.Sin(Time.time * Frequency) * Magnitude;
+        }
+    }
 }

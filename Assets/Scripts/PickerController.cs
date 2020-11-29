@@ -51,11 +51,13 @@ if (Input.touchCount > 0)
         if (other.tag == "EndPoint")
         {
             GameManager.Instance.LockPicker = true;
+            transform.GetChild(0).gameObject.SetActive(false);
         }
 
         if (other.tag == "Modifier")
         {
             transform.GetChild(0).gameObject.SetActive(true);
+            other.gameObject.SetActive(false);
         }
     }
 
